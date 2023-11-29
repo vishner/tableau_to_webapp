@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>1 Column Full-Screen Photo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Link to the Responsive Columns CSS -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/r-c-min.css')}}" />
+
+    <!-- Link to your general styles -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/column-styles.css')}}" />
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var countdown = 100;  // Countdown value in seconds
+            var countdownElement = document.getElementById('countdown');
+
+            function startCountdown() {
+                countdownElement.innerHTML = countdown;
+                countdown--;
+
+                if (countdown < 0) {
+                    location.reload();
+                } else {
+                    setTimeout(startCountdown, 1000);  // Update countdown every 1 second
+                }
+            }
+
+            startCountdown();
+        });
+    </script>
+</head>
+<body>
+
+<!-- Start layout -->
+<!-- <r-c join class="full-height-centered">
+    <c1-1 class="cover-photo" style="background-image:url('data:image/png;base64,{{ encoded_image }}')">
+        <br>
+    </c1-1>
+</r-c> -->
+<!-- End layout -->
+
+<r-c join class="full-height-centered" style="background-image:url('data:image/png;base64,{{ encoded_image }}');
+                                                background-size: contain;
+                                                    background-repeat: no-repeat;
+                                                        background-position:50% 50%;">
+    <c1-1 r-c middle >
+        <c1-1>
+            
+        </c1-1>
+    </c1-1>
+</r-c>
+<div class="countdown-text">
+    Page will refresh in <span id="countdown"></span> seconds.
+</div>
+
+</body>
+</html>
